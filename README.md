@@ -1,64 +1,48 @@
-# WorkSync
+# Assignment: Team Task Manager (Full-Stack)
 
-WorkSync is a project and task management tool built for small teams. You can create projects, assign work to teammates, and track what's getting done — all in one place.
+**Project Name:** WorkSync  
+**Live URL:** https://task-team-manager-production-88c7.up.railway.app
 
-## Features
+This repository is a complete solution for the Full-Stack Team Task Manager assignment. It provides a platform where users can create projects, assign tasks, and track overall progress through a role-based access system.
 
-- User registration and login
-- Create and manage multiple projects
-- Add team members to projects
-- Create tasks, set priorities, assign them to people
-- Kanban board with four stages — To Do, In Progress, Review, Done
-- Overview dashboard with task stats and recent activity
-- Admin users can manage the whole team
+## 🚀 Key Features
 
-## Stack
+- **Authentication (Signup/Login):** Implemented secure user registration and login endpoints utilizing JSON Web Tokens (JWT).
+- **Project & Team Management:** Functionality to spin up new projects and seamlessly invite team members to collaborate.
+- **Task Creation, Assignment & Tracking:** Users can log tasks, assign them to teammates, and drag them across different statuses using a Kanban view.
+- **Dashboard:** A central overview that calculates total tasks, tracks status distributions, and highlights overdue assignments.
 
-- **Node.js + Express** for the backend API
-- **MySQL** for the database
-- **JWT** for authentication
-- **HTML/CSS/JS** for the frontend (no build tools needed)
-- **Deployed on Railway**
+## ⚙️ Requirements Addressed
 
-## Local setup
+- **REST APIs + Database (SQL):** The backend is powered by Node.js and Express, providing standard REST APIs. Data is securely managed and queried using a **MySQL** database.
+- **Proper Validations & Relationships:** 
+  - All incoming API requests are validated.
+  - The SQL schema enforces relational integrity between users, projects, and tasks using foreign keys.
+- **Role-Based Access Control:** 
+  - Implemented `Admin` and `Member` roles.
+  - Middleware enforces that only Admins can create projects and manage users, while Members can interact with tasks within their assigned projects.
 
-```bash
-npm install
-```
+## 🌐 Deployment (Mandatory)
 
-Create a `.env` file in the root:
+The application has been successfully deployed and is fully functional on **Railway**. It uses a Railway-hosted Node environment connected to a Railway-provisioned MySQL database instance.
 
-```
-DB_HOST=localhost
-DB_PORT=3306
-DB_USER=root
-DB_PASSWORD=your_mysql_password
-DB_NAME=task_team_manager
-JWT_SECRET=pick_any_secret
-NODE_ENV=development
-```
+---
 
-Initialize the database:
+### Local Setup Instructions
 
-```bash
-node server/database/setup.js
-```
+To run this assignment locally on your machine:
 
-Run the app:
-
-```bash
-npm start
-```
-
-Open `http://localhost:5000`
-
-## How roles work
-
-When you sign up you pick either **Administrator** or **Team Member**.
-
-- Administrators can create projects, add or remove members, manage all tasks, and see the full user list
-- Team Members can see projects they're added to, create tasks, update task status, and comment on tasks
-
-## Deployed at
-
-https://task-team-manager-production-88c7.up.railway.app
+1. Clone the repo and install the required packages: `npm install`
+2. Create a `.env` configuration file in the root directory:
+   ```env
+   DB_HOST=localhost
+   DB_PORT=3306
+   DB_USER=root
+   DB_PASSWORD=your_mysql_password
+   DB_NAME=task_team_manager
+   JWT_SECRET=any_secret_string
+   NODE_ENV=development
+   ```
+3. Run the automated database setup script: `node server/database/setup.js`
+4. Start the application: `npm start`
+5. Access the app at `http://localhost:5000`
